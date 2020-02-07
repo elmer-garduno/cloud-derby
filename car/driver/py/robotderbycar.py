@@ -52,6 +52,8 @@ class RobotDerbyCar(easygopigo3.EasyGoPiGo3):
         self.GREEN = (0, 255, 0)
         self.RED = (255, 0, 0)
         self.BLUE = (0, 0, 255)
+        self.PURPLE = (83, 27, 174)
+
 
         # Settings for cars in US Reston Office (these grippers were built differently)
         self.CONST_GRIPPER_FULL_OPEN = 90
@@ -141,7 +143,6 @@ class RobotDerbyCar(easygopigo3.EasyGoPiGo3):
         while self.Easy_GPG.target_reached(EndPositionLeft, EndPositionRight) is False:
             # read the distance of the laser sensor
             dist_read = self.ReadDistanceMM()
-
             # stop car if there is an object within the limit
             if ((dist_read is not None) and (int(dist_read) <= int(dist_limit)) and (int(dist_requested) > int(dist_limit))):
                 print("RobotDerbyCar.drive(): Obstacle Found. Stopping Car before requested distance. Object distance: " + str(dist_read))
